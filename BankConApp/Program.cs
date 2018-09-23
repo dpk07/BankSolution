@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BankLibrary;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace BankConApp
 {
@@ -35,6 +37,8 @@ namespace BankConApp
         Console.ReadKey(true);
         account.Withdraw(500);
         Console.WriteLine($"acc[4] = {account[1]}");
+        Console.WriteLine(RetrieveAccount());
+        Console.ReadKey(true);
         return;
 
       }
@@ -43,6 +47,10 @@ namespace BankConApp
         Console.WriteLine("\n\n\n\nToString:" + ex.ToString());
       }
       catch (OpeningBalanceException ex)
+      {
+        Console.WriteLine("\n\n\n\nToString:" + ex.ToString());
+      }
+      catch (InsufficientFundsException ex)
       {
         Console.WriteLine("\n\n\n\nToString:" + ex.ToString());
       }
@@ -70,6 +78,31 @@ namespace BankConApp
       Console.WriteLine($"SMS Alert... \nAccountNumber: {accountNumber},TransactionType: {transactionType}, TransactionAmount: {transactionAmount} and new Balance: {newBalance}");
     }
     
+    //Serialization
+    static void SaveAccount(Account account)
+    {
+      FileStream fileStream = new FileStream($"../../{account.HoldersName}.txt", FileMode.CreateNew, FileAccess.Write);
+      BinaryFormatter bFormatter = new BinaryFormatter();
+      bFormatter.Serialize(fileStream, account);
+      fileStream.Flush();
+      fileStream.Close();
+
+    }
+
+    static Account RetrieveAccount()
+    {
+      Account account;
+      FileStream fileStream = new FileStream($"../../Deepak.txt", FileMode.Open, FileAccess.Read);
+      BinaryFormatter bFormatter = new BinaryFormatter();
+      account=(Account)bFormatter.Deserialize(fileStream);
+      fileStream.Flush();
+      fileStream.Close();
+      return account;
+      
+
+    }
+
+
 
   }
 }

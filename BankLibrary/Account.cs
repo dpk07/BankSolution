@@ -9,7 +9,7 @@ namespace BankLibrary
   //Delegate step 1
   public delegate void onBalanceChange(int accountNumber, string transactionType, decimal transactionAmount, decimal newBalance);
   
-
+  [Serializable]
   public abstract class Account
   {
     int _accountNumber;

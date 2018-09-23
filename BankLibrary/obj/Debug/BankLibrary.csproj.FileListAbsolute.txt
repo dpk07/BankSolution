@@ -1,6 +1,5 @@
 C:\Basics\BankSolution\BankLibrary\bin\Debug\BankLibrary.dll
 C:\Basics\BankSolution\BankLibrary\bin\Debug\BankLibrary.pdb
-C:\Basics\BankSolution\BankLibrary\obj\Debug\BankLibrary.csprojAssemblyReference.cache
 C:\Basics\BankSolution\BankLibrary\obj\Debug\BankLibrary.csproj.CoreCompileInputs.cache
 C:\Basics\BankSolution\BankLibrary\obj\Debug\BankLibrary.dll
 C:\Basics\BankSolution\BankLibrary\obj\Debug\BankLibrary.pdb
